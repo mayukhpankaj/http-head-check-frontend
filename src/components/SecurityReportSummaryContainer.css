@@ -1,0 +1,22 @@
+.assetsrow1 {
+  width: 100%;
+  border: 0;
+  outline: 0;
+  background-color: #ecebff;
+  align-self: stretch;
+  height: 64px;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 0-1px 0#e1e3e5 inset;
+  display: flex;
+  flex-direction: column;
+  align-items:flex-start;
+  justify-content: flex-start;
+  padding: 20px;
+  margin-top: 0px;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro";
+  font-weight: 600;
+  font-size: 20px;
+  color: #202223;
+  min-width: 250px;
+}
