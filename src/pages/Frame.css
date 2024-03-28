@@ -1715,7 +1715,6 @@
 
 
 
-
 .label6,
 .label7,
 .label7:hover,
@@ -1825,3 +1824,32 @@
   background-color: #510db0;
 }
 
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keybox {
+  width: 30%;
+}
+
+.valuebox {
+  width: 70%;
+  word-wrap: break-word;
+  overflow: auto;
+}
+
+@media screen and (max-width: 600px) {
+  .row {
+    flex-direction: column;
+  }
+  .valuebox {
+    width: 100%; /* Take full width on smaller screens */
+  }
+}

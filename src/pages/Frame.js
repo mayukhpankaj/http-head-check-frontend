@@ -1,6 +1,6 @@
 import SecurityReportSummaryContainer from "../components/SecurityReportSummaryContainer";
 import "./Frame.css";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import akto from './akto.jpeg'
 import { v4 as uuidv4 } from 'uuid';
 
@@ -416,15 +416,15 @@ const Frame = () => {
           throw new Error("Network response was not ok");
           
         }
-        // setclick(false)
+
         return response.json();
       })
       .then((data) => {
         // Handle the parsed JSON data
         setData(data);
-        console.log(data);
+        // console.log(data);
         setError(null);
-        // setclick(false)
+   
      
 
         const object1 = [
@@ -439,14 +439,14 @@ const Frame = () => {
 
         let messages = data["data"]["messages"];
 
-        console.log(messages)
+        // console.log(messages)
 
         const filterMessages = (type) => {
           const data = Array.isArray(messages) ? messages : [];
           return data.filter((item) => item.type === type);
         };
 
-        console.log(filterMessages("arr")[0]);
+        // console.log(filterMessages("arr")[0]);
 
         const object2 = filterMessages("arr")[0]['field'];
 
@@ -458,7 +458,7 @@ const Frame = () => {
           (element) => !set_object2.has(element)
         );
 
-        console.log(presentHeader);
+        // console.log(presentHeader);
 
         setPresent(presentHeader);
 
@@ -473,7 +473,7 @@ const Frame = () => {
           
       
 
-         console.log(upcoming)
+        //  console.log(upcoming)
 
          setUp(upcoming)
 
@@ -503,12 +503,6 @@ const Frame = () => {
       }
 
       setInfo(addfield)
-
-
-
-
-
-
 
         const now = getUserTimeWithTimeZone();
         setCurrentTime(now);
@@ -602,7 +596,7 @@ const Frame = () => {
           
 
 
-            <div className="checkbox-frame">
+            <div className="checkbox-frame" key={uuidv4()}>
               <SecurityReportSummaryContainer securitySummaryText="Security report summary" />
               <div className="vector-separator">
                 <div className="akto-logo-frame">
@@ -631,7 +625,7 @@ const Frame = () => {
                           alt=""
                           src="/ticksmall-minor.svg"
                         />
-                        <div className="label">{item}</div>
+                        <div className="label" key={uuidv4()}>{item}</div>
                       </button>
                     ))}
 
@@ -654,10 +648,10 @@ const Frame = () => {
 
 
             {data &&  (
-            <div className="checkbox-frame">
+            <div className="checkbox-frame" >
            
               <SecurityReportSummaryContainer securitySummaryText="Raw headers" />
-              <div className="paragraph-text-frame">
+              {/* <div className="paragraph-text-frame">
                
                
                     {Object.entries(data["data"]["headers"]).map(
@@ -673,12 +667,36 @@ const Frame = () => {
                     )}
                
                
-              </div> 
+              </div>  */}
+
+              <div className="paragraph-text-frame"   >
+               
+               
+               {Object.entries(data["data"]["headers"]).map(
+                 ([key, value]) => (
+                   <React.Fragment key={uuidv4()}>
+                     <div className="heading-text-frame" >
+                       <div className="content-security-policy">{key}</div>
+                       <div className="valuebox">{value}</div>
+                     </div>
+                     <div className="heading-text-frame1" />
+                   </React.Fragment>
+                 )
+               )}
+          
+          
+         </div> 
+
+
+
+
+
+
             </div> )}
 
             {missing.length != 0 && (
 
-            <div className="checkbox-frame">
+            <div className="checkbox-frame" >
               <SecurityReportSummaryContainer securitySummaryText="Missing headers" />
               <div className="paragraph-text-frame">
                 
@@ -686,8 +704,8 @@ const Frame = () => {
 
 
                 {missing.map((item) => (
-                      < >
-                        <div className="heading-text-frame" key={uuidv4()}>
+                      <React.Fragment key={uuidv4()} >
+                        <div className="heading-text-frame" >
                   <div className="content-security-policy">
                     {item}
                   </div>
@@ -709,7 +727,7 @@ const Frame = () => {
                 {missing[missing.length-1]!== item && (
                 <div className="heading-text-frame1" />)}
                       
-                      </>
+                      </React.Fragment>
                     ))}
 
               </div>
@@ -721,8 +739,8 @@ const Frame = () => {
               <div className="paragraph-text-frame">
 
               {warn.map((item) => (
-                      < >
-                        <div className="heading-text-frame" key={uuidv4()}>
+                      < React.Fragment key={uuidv4()} >
+                        <div className="heading-text-frame" >
                   <div className="content-security-policy">
                     {item.field}
                   </div>
@@ -747,22 +765,22 @@ const Frame = () => {
                 {warn[warn.length-1]!== item && (
                 <div className="heading-text-frame1" />)}
                       
-                      </>
+                      </React.Fragment>
                     ))}
 
                 </div>
             </div> )}
 
             {up.length !=0 && (
-            <div className="checkbox-frame">
+            <div className="checkbox-frame" >
               <SecurityReportSummaryContainer securitySummaryText="Upcoming Headers" />
 
               <div className="paragraph-text-frame">
                 
 
                 {up.map((item) => (
-                      < >
-                        <div className="heading-text-frame" key={uuidv4()}>
+                      < React.Fragment key={uuidv4()}>
+                        <div className="heading-text-frame" >
                   <div className="content-security-policy">
                     {item}
                   </div>
@@ -783,7 +801,7 @@ const Frame = () => {
                 {up[up.length-1]!== item && (
                 <div className="heading-text-frame1" />)}
                       
-                      </>
+                      </React.Fragment>
                     ))} 
 
 
@@ -793,12 +811,12 @@ const Frame = () => {
              
             </div> )}
 
-            <div className="checkbox-frame">
+            <div className="checkbox-frame" >
               <SecurityReportSummaryContainer securitySummaryText="Additional Information" />
               <div className="server-header">
               {info.map((item) => (
-                      < >
-                        <div className="heading-text-frame" key={uuidv4()}>
+                      <React.Fragment key={uuidv4()} >
+                        <div className="heading-text-frame" >
                   <div className="content-security-policy">
                     {item}
                   </div>
@@ -820,7 +838,7 @@ const Frame = () => {
                 {info[info.length-1]!==item && (
                 <div className="heading-text-frame1" />)}
                       
-                      </>
+                      </React.Fragment >
                     ))}
           
       
@@ -833,8 +851,11 @@ const Frame = () => {
           </div>
         </section>
         <footer className="assetsrow">
-          <img className="icon" loading="lazy" alt="" src={akto} />
+          <a href="https://akto.io" target="_blank" rel="noopener noreferrer">
+          <img className="icon" loading="lazy" alt="" src={akto} />    </a>
+          <a href="https://akto.io" target="_blank" rel="noopener noreferrer">
           <h2 className="akto">akto</h2>
+          </a>       
         </footer>
       </main>
     </div>
