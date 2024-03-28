@@ -75,8 +75,8 @@ const Frame = () => {
     "x-frame-options": { text:  "Controls whether a page can be loaded in a frame or iframe.", link: "https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options"} ,
     "x-ua-compatible": { text:"Instructs IE to use a specific version rendering engine." , link: "https://http.dev/x-ua-compatible"  }  ,
     "pragma" : { text:"Provides directives for caching mechanisms in requests and responses.", link:"https://www.holisticseo.digital/technical-seo/web-accessibility/http-header/pragma" } ,
-    "cross-origin-embedder-policy" : { text:"Controls whether a web page can be embedded cross-origin." }, 
-    "cross-origin-opener-policy" : { text:"Manages how a web page interacts with other origins, protect against cross-origin threats" }, 
+    "cross-origin-embedder-policy" : { text:"Controls whether a web page can be embedded cross-origin.", link: "" }, 
+    "cross-origin-opener-policy" : { text:"Manages how a web page interacts with other origins, protect against cross-origin threats", link:""}, 
     "cross-origin-resource-policy" : { "text":"Governs resource sharing across origins, preventing unauthorized access" , link: ""}, 
     
       "www-authenticate": {
